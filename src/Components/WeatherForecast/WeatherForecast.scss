@@ -1,46 +1,49 @@
 .weatherForecast_container {
+  background-image: linear-gradient(#fff, rgba(0, 0, 0, 0));
   &.clear_sky {
-    background: url("../../assets/clear_sky.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/clear_sky.png") no-repeat center center fixed;
+
     background-size: cover;
   }
   &.few_clouds {
-    background: url("../../assets/few_clouds.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/few_clouds.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.scattered_clouds {
-    background: url("../../assets/scattered_clouds.png") no-repeat center center
-      fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/scattered_clouds.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.broken_clouds {
-    background: url("../../assets/broken_clouds.png") no-repeat center center
-      fixed;
-    background-size: cover;
-  }
-  &.clear_sky {
-    background: url("../../assets/clear_sky.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/broken_clouds.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.rain {
-    background: url("../../assets/rain.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/rain.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.shower_rain {
-    background: url("../../assets/shower_rain.png") no-repeat center center
-      fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/shower_rain.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.snow {
-    background: url("../../assets/snow.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/snow.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.thunderstorm {
-    background: url("../../assets/thunderstorm.png") no-repeat center center
-      fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/thunderstorm.png") no-repeat center center fixed;
     background-size: cover;
   }
   &.mist {
-    background-image: url("../../assets/mist.png") no-repeat center center fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0), #fff),
+      url("../../assets/mist.png") no-repeat center center fixed;
     background-size: cover;
   }
 }

@@ -83,11 +83,15 @@ export const WeatherState = ({ children }) => {
     });
   };
 
-  const getCelsiusFromKelvin = (temp) => {
-    return temp - 273.15;
+  const getCelsiusFromKelvin = (temp, string = false) => {
+    if (string) {
+      return (temp - 273.15).toFixed(1) + "°C";
+    } else {
+      return (temp - 273.15).toFixed(1);
+    }
   };
   const getFahrenheitFromKelvin = (temp) => {
-    return ((temp - 273.15) * 9) / 5 + 32;
+    return (((temp - 273.15) * 9) / 5 + 32).toFixed(1);
   };
   return (
     <WeatherContext.Provider

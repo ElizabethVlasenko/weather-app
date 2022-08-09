@@ -1,0 +1,47 @@
+.weatherMain_container {
+  width: 486px;
+  height: 541px;
+  border-radius: 96px 96px 0 0;
+  background-color: #fff;
+  padding: 45px 30px;
+  box-sizing: border-box;
+  margin-left: 105px;
+}
+
+.weatherMain_header {
+  font-size: 46px;
+  margin: 0;
+}
+
+.weatherMain_weatherIcon {
+  width: 200px;
+  height: 200px;
+}
+
+.weatherMain_temperature {
+  margin: 0 0 0 0;
+  font-size: 46px;
+}
+
+.weatherMain_weatherDescription {
+  font-size: 20px;
+  margin: 0 0 25px 0;
+}
+.weatherMain_temperatureContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.weatherMain_temperatureDifference {
+  font-size: 23px;
+  height: 100px;
+  padding-top: 30px;
+  box-sizing: border-box;
+
+  &.weatherMain_day {
+    background: url("../../../assets/sun-fill.png") no-repeat center center;
+  }
+  &.weatherMain_night {
+    background: url("../../../assets/moon-fill.png") no-repeat center center;
+  }
+}
