@@ -2,10 +2,11 @@
   width: 486px;
   height: 541px;
   border-radius: 96px 96px 0 0;
-  background-color: #fff;
+  background-color: #e3f4fe;
   padding: 45px 30px;
   box-sizing: border-box;
   margin-left: 105px;
+  text-align: center;
 }
 
 .weatherMain_header {
@@ -14,8 +15,8 @@
 }
 
 .weatherMain_weatherIcon {
+  margin-top: 30px;
   width: 200px;
-  height: 200px;
 }
 
 .weatherMain_temperature {
@@ -37,11 +38,20 @@
   height: 100px;
   padding-top: 30px;
   box-sizing: border-box;
+  position: relative;
+  font-weight: 600;
+}
 
-  &.weatherMain_day {
-    background: url("../../../assets/sun-fill.png") no-repeat center center;
-  }
-  &.weatherMain_night {
-    background: url("../../../assets/moon-fill.png") no-repeat center center;
-  }
+.weatherMain_day {
+  width: 120px;
+  height: 120px;
+  background-color: #ffcd00;
+  border-radius: 100%;
+}
+
+.weatherMain_night {
+  width: 120px;
+  height: 120px;
+  background-color: #1c9cf6;
+  border-radius: 100%;
 }

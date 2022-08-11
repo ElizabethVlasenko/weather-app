@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./WeatherForecast.scss";
 import { WeatherContext } from "../../Context/WeatherContext/WeatherContext";
-import { ReactComponent as Logo } from "../../assets/sun.svg";
+//import { ReactComponent as Logo } from "../../assets/sun.svg";
 import WeatherMain from "./WeatherMain/WeatherMain";
 
 export default function WeatherForecast() {
@@ -42,18 +42,35 @@ export default function WeatherForecast() {
             (time.getMinutes() < 10
               ? "0" + time.getMinutes()
               : time.getMinutes())}
-        </p>
-
+        </p> */}
+        {/* 
         {UTCTime > weather.sys.sunrise && UTCTime < weather.sys.sunset ? (
           <Logo />
-        ) : null}
+        ) : null} */}
         <WeatherMain
-          name={weather.name}
-          temp={weather.getCelsiusFromKelvin(weather.main.temp, true)}
-          temp_max={weather.getCelsiusFromKelvin(weather.main.temp_max, true)}
-          temp_min={weather.getCelsiusFromKelvin(weather.main.temp_min, true)}
-          description={weather.weather[0].description}
-        ></WeatherMain> */}
+          name={weather.Search}
+          temp={
+            weather.DailyForecasts[0].Temperature.Metric.Value +
+            "°" +
+            weather.DailyForecasts[0].Temperature.Metric.Unit
+          }
+          temp_max={
+            weather.DailyForecasts[1].Temperature.Maximum.Value +
+            "°" +
+            weather.DailyForecasts[1].Temperature.Maximum.Unit
+          }
+          temp_min={
+            weather.DailyForecasts[1].Temperature.Minimum.Value +
+            "°" +
+            weather.DailyForecasts[1].Temperature.Minimum.Unit
+          }
+          description={weather.DailyForecasts[0].WeatherText}
+          imgSrc={`https://developer.accuweather.com/sites/default/files/${
+            weather.DailyForecasts[0].WeatherIcon < 10
+              ? "0" + weather.DailyForecasts[0].WeatherIcon
+              : weather.DailyForecasts[0].WeatherIcon
+          }-s.png`}
+        ></WeatherMain>
       </div>
     </div>
   );
