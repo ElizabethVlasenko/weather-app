@@ -1,4 +1,5 @@
 .weatherForecast_container {
+  text-align: left;
   background-image: linear-gradient(#fff, rgba(0, 0, 0, 0));
   &.clear_sky {
     background: linear-gradient(rgba(0, 0, 0, 0), #fff),

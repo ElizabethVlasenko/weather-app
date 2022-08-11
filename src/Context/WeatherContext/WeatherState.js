@@ -4,56 +4,41 @@ import { WeatherReducer } from "./WeatherReducer";
 import { WeatherContext } from "./WeatherContext";
 import { GET_WEATHER } from "../types";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 
 export const WeatherState = ({ children }) => {
   const initialState = {
-    coord: {
-      lon: 0,
-      lat: 0,
+    Headline: {
+      EffectiveDate: "2022-08-11T08:00:00+01:00",
+      EffectiveEpochDate: 1660201200,
+      Severity: 5,
+      Text: "Possible danger of dehydration and heat stroke while doing strenuous activities Thursday",
+      Category: "heat",
+      EndDate: "2022-08-11T20:00:00+01:00",
+      EndEpochDate: 1660244400,
+      MobileLink:
+        "http://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?lang=en-us",
+      Link: "http://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?lang=en-us",
     },
-    weather: [
+    DailyForecasts: [
       {
-        id: 800,
-        main: "",
-        description: "",
-        icon: "",
+        Date: "2022-08-10T07:00:00+01:00",
+        EpochDate: 1660111200,
+        Temperature: {
+          Minimum: { Value: 62, Unit: "F", UnitType: 18 },
+          Maximum: { Value: 83, Unit: "F", UnitType: 18 },
+        },
+        Day: { Icon: 1, IconPhrase: "Sunny", HasPrecipitation: false },
+        Night: { Icon: 33, IconPhrase: "Clear", HasPrecipitation: false },
+        Sources: ["AccuWeather"],
+        MobileLink:
+          "http://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?day=1&lang=en-us",
+        Link: "http://www.accuweather.com/en/gb/london/ec4a-2/daily-weather-forecast/328328?day=1&lang=en-us",
       },
     ],
-    base: "stations",
-    main: {
-      temp: 0,
-      feels_like: 0,
-      temp_min: 0,
-      temp_max: 0,
-      pressure: 0,
-      humidity: 0,
-    },
-    visibility: 1,
-    wind: {
-      speed: 0,
-      deg: 0,
-    },
-    clouds: {
-      all: 1,
-    },
-    dt: 0,
-    sys: {
-      type: 1,
-      id: 1,
-      message: 0,
-      country: "",
-      sunrise: 0,
-      sunset: 0,
-    },
-    timezone: 0,
-    id: 0,
-    name: "",
-    cod: 200,
   };
 
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
-
   const getWeather = async () => {
     console.log(localStorage.getItem("expirationDate"), "expirationDate");
     let data = {};
@@ -63,7 +48,7 @@ export const WeatherState = ({ children }) => {
     if (isNaN(localStorageExpDate) || localStorageExpDate < new Date()) {
       console.log("new data");
       const response = await axios.get(
-        "https://api.openweathermap.org/data/2.5/weather?q=London&appid=" +
+        "http://dataservice.accuweather.com/forecasts/v1/daily/5day/328328?language=en-gb&metric=true&details=true&apikey=" +
           API_KEY
       );
       data = response.data;

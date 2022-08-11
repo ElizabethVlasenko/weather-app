@@ -6,8 +6,8 @@ export default function Header() {
   const weather = useContext(WeatherContext);
   return (
     <div>
-      Header {weather.name}{" "}
-      {weather.getCelsiusFromKelvin(weather.main.temp, true)}
+      {/* Header {weather.name}{" "}
+      {weather.getCelsiusFromKelvin(weather.main.temp, true)} */}
     </div>
   );
 }
