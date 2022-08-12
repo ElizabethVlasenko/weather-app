@@ -1,0 +1,39 @@
+.WeatherDailyForecast_container {
+  position: relative;
+  width: 150px;
+  height: 205px;
+  border-radius: 31px 31px 0 0;
+  background-color: #1c9cf6;
+  padding: 25px;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background-color: #e3f4fe;
+  }
+}
+
+.WeatherDailyForecast_date {
+  font-size: 21px;
+  margin: 0 0 20px 0;
+}
+
+.WeatherDailyForecast_weatherIcon {
+  height: 100px;
+  width: 155px;
+  position: absolute;
+  object-fit: cover;
+  left: 0;
+}
+
+.WeatherDailyForecast_temperature {
+  width: 100%;
+
+  font-size: 37px;
+  font-weight: 700;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  margin-top: 20px;
+}
