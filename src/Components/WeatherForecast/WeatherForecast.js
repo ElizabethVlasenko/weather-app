@@ -27,25 +27,6 @@ export default function WeatherForecast() {
       />
     );
   }
-  console.log(weatherFor5Days);
-  // const weatherImg =
-  //   weather.weather[0].description !== ""
-  //     ? weather.weather[0].description.replace(" ", "_")
-  //     : "clear_sky";
-
-  // const UTCTime = Date.parse(new Date().toUTCString().slice(0, -4));
-
-  // const [time, setTime] = useState(new Date(UTCTime + weather.timezone));
-  // console.log(UTCTime, time);
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const UTCTime = Date.parse(new Date().toUTCString().slice(0, -4));
-  //     setTime(new Date(UTCTime + weather.timezone));
-  //   }, 60000);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, []);
 
   return (
     <div>
@@ -55,23 +36,9 @@ export default function WeatherForecast() {
         <button onClick={() => localStorage.removeItem("expirationDate")}>
           remove expirationDate
         </button>
-
-        {/* <pre>{JSON.stringify(weather, null, "\t")}</pre> */}
-        {/* <p>
-          Current time{" "}
-          {time.getHours() +
-            ":" +
-            (time.getMinutes() < 10
-              ? "0" + time.getMinutes()
-              : time.getMinutes())}
-        </p> */}
-        {/* 
-        {UTCTime > weather.sys.sunrise && UTCTime < weather.sys.sunset ? (
-          <Logo />
-        ) : null} */}
         <div className="weatherForecast_5daysContainer">
           <WeatherMain
-            name={weather.Search}
+            name={weather.Info.City}
             temp={
               weather.DailyForecasts[0].Temperature.Metric.Value +
               "°" +

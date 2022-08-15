@@ -2,7 +2,6 @@ import React from "react";
 import "./WeatherDailyForecast.scss";
 
 export default function WeatherDailyForecast(props) {
-  console.log(props);
   return (
     <div className="WeatherDailyForecast_container">
       <p className="WeatherDailyForecast_date">

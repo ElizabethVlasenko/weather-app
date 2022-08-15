@@ -1,9 +1,13 @@
-import { GET_WEATHER } from "../types";
+import { GET_WEATHER, GET_CITIES } from "../types";
 
 const handlers = {
   [GET_WEATHER]: (state, { payload }) => ({
     ...state,
     ...payload,
+  }),
+  [GET_CITIES]: (state, { payload }) => ({
+    ...state,
+    Search: { ...payload },
   }),
   DEFAULT: (state) => state,
 };

@@ -2,13 +2,16 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import { WeatherReducer } from "./WeatherReducer";
 import { WeatherContext } from "./WeatherContext";
-import { GET_WEATHER } from "../types";
+import { GET_WEATHER, GET_CITIES } from "../types";
 
 const API_KEY = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 
 export const WeatherState = ({ children }) => {
   const initialState = {
-    Search: "London",
+    Search: { string: "", results: [] },
+    Info: {
+      City: "London",
+    },
     Headline: {
       EffectiveDate: "2022-08-11T08:00:00+01:00",
       EffectiveEpochDate: 1660201200,
@@ -421,7 +424,9 @@ export const WeatherState = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
+
   const getWeather = async () => {
+    console.log(state.Search.string);
     console.log(localStorage.getItem("expirationDate"), "expirationDate");
     let data5Days = {};
     let localStorageExpDate = Date.parse(
@@ -454,23 +459,32 @@ export const WeatherState = ({ children }) => {
     });
   };
 
-  const getCelsiusFromKelvin = (temp, string = false) => {
-    if (string) {
-      return (temp - 273.15).toFixed(1) + "°C";
+  const getCities = async (e) => {
+    const searchString = e.target.value;
+    if (searchString.length > 3) {
+      const response = await axios.get(
+        `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchString}&apikey=${API_KEY}`
+      );
+      console.log(response.data);
+      dispatch({
+        type: GET_CITIES,
+        payload: { string: searchString, results: response.data },
+      });
     } else {
-      return (temp - 273.15).toFixed(1);
+      dispatch({
+        type: GET_CITIES,
+        payload: { string: searchString, results: [] },
+      });
     }
   };
-  const getFahrenheitFromKelvin = (temp) => {
-    return (((temp - 273.15) * 9) / 5 + 32).toFixed(1);
-  };
+
   return (
     <WeatherContext.Provider
       value={{
         ...state,
         getWeather,
-        getCelsiusFromKelvin,
-        getFahrenheitFromKelvin,
+
+        getCities,
       }}
     >
       {children}
