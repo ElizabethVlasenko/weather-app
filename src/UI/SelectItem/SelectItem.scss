@@ -1,0 +1,18 @@
+.selectItem_container {
+  margin: 5px auto;
+  width: 100%;
+  background-color: #fff;
+  &:hover {
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+  }
+}
+
+.selectItem_header {
+  margin: 0;
+}
+
+.selectItem_details {
+  font-size: small;
+  margin: 0;
+}

@@ -425,8 +425,8 @@ export const WeatherState = ({ children }) => {
 
   const [state, dispatch] = useReducer(WeatherReducer, initialState);
 
-  const getWeather = async () => {
-    console.log(state.Search.string);
+  const getWeather = async (cityID) => {
+    console.log(state.Search.string, cityID);
     console.log(localStorage.getItem("expirationDate"), "expirationDate");
     let data5Days = {};
     let localStorageExpDate = Date.parse(
@@ -435,12 +435,12 @@ export const WeatherState = ({ children }) => {
     if (isNaN(localStorageExpDate) || localStorageExpDate < new Date()) {
       console.log("new data");
       const response5Days = await axios.get(
-        "http://dataservice.accuweather.com/forecasts/v1/daily/5day/328328?language=en-gb&metric=true&details=true&apikey=" +
+        `http://dataservice.accuweather.com/forecasts/v1/daily/5day/${cityID}?language=en-gb&metric=true&details=true&apikey=` +
           API_KEY
       );
       data5Days = response5Days.data;
       const responseCurrent = await axios.get(
-        "http://dataservice.accuweather.com/currentconditions/v1/328328?language=en-gb&details=true&apikey=" +
+        `http://dataservice.accuweather.com/currentconditions/v1/${cityID}?language=en-gb&details=true&apikey=` +
           API_KEY
       );
       data5Days.DailyForecasts.unshift(responseCurrent.data[0]);
@@ -459,8 +459,7 @@ export const WeatherState = ({ children }) => {
     });
   };
 
-  const getCities = async (e) => {
-    const searchString = e.target.value;
+  const getCities = async (searchString) => {
     if (searchString.length > 3) {
       const response = await axios.get(
         `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=${searchString}&apikey=${API_KEY}`
